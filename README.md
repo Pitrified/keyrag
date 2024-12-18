@@ -53,3 +53,17 @@ RAG:
 * Embed the keypoints in the vector space
 * For each query keypoint, find the closest keypoint(s) in the db
 * Aggregate the distances to get a score for the query
+
+### Derail
+
+Steal the config style from recipamatic: https://github.com/Pitrified/recipamatic/blob/main/py/src/recipamatic/langchain_openai_/chat_openai_config.py
+
+And the vector db from laife: https://github.com/Pitrified/laife/blob/main/src/laife/llm/vector_db.py
+
+The config should have an abstract class that defines the interface.
+The config should have a method that returns the embedding function (Embeddings).
+
+Then steal the structured from recipamatic:
+https://github.com/Pitrified/recipamatic/blob/main/py/src/recipamatic/cook/recipe_core/transcriber.py
+
+And it would be so nice to have a Runnable? Chain? class that can be put in a standard langchain chain.
