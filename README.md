@@ -54,6 +54,28 @@ RAG:
 * For each query keypoint, find the closest keypoint(s) in the db
 * Aggregate the distances to get a score for the query
 
+### Problem with similar keys
+
+Say we have a korean restaurant, the keypoints are "korean", "diner"
+Then we also have a korean bbq, the keypoints are "Korea", "bbq", "restaurant"
+Then a third korean establishment, the keypoints are "South Korea", "dining"
+
+Our query is "korean restaurant", the keypoints are "korean", "restaurant"
+How do we decide the `k` for the number of closest keypoints to consider?
+
+If it is 2, say we get:
+* korean, Korea
+* restaurant, dining
+
+The second place has two matches, the first place has one match.
+But it is silly to miss "diner" just because it is not in the top 2.
+
+A reasonably high `k` would be better, but then we might get too many matches.
+Also it does not scale as we keep adding more establishments, as we have no control over the number of different keypoint values.
+
+When we add a new keypoint, we could check if it is similar to an existing keypoint.
+The choice of the threshold for similarity is important.
+
 ### Derail
 
 Steal the config style from recipamatic: https://github.com/Pitrified/recipamatic/blob/main/py/src/recipamatic/langchain_openai_/chat_openai_config.py
