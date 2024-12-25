@@ -51,8 +51,11 @@ RAG:
 * Have a query
 * Compute keypoints for the query
 * Embed the keypoints in the vector space
-* For each query keypoint, find the closest keypoint(s) in the db
+* For each query keypoint find the closest keypoint(s) in the db
+* Find the documents closest to the query keypoint(s)
 * Aggregate the distances to get a score for the query
+
+![flow](./docs/excali/idea.excalidraw.png)
 
 ### Problem with similar keys
 
